@@ -1,0 +1,13 @@
+{
+  "name": "dukaanboost",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A lightweight, no-API marketing toolkit for local businesses.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
