@@ -4,9 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-const scripts = [...html.matchAll(/<script>([\\s\\S]*?)<\\/script>/gi)];
-assert.ok(scripts.length, 'app should include its inline script');
-const appScript = scripts.at(-1)[1];
+const scriptStart = html.lastIndexOf('<script>') + '<script>'.length;\nconst scriptEnd = html.indexOf('</script>', scriptStart);\nassert.ok(scriptStart >= '<script>'.length && scriptEnd > scriptStart, 'app should include its inline script');\nconst appScript = html.slice(scriptStart, scriptEnd);
 
 test('page has mobile metadata and required business form controls', () => {
   assert.match(html, /<meta name="viewport"/i);
