@@ -54,13 +54,32 @@ english:{cta:"Message us to know more.",local:"Serving our local community with 
 const toneWords={friendly:{start:["A little something special for you","Good news, neighbours","Your local favourite has an update"],emoji:"😊"},premium:{start:["A thoughtful upgrade to your routine","Quality and care, in every detail","Discover something made for you"],emoji:"✨"},playful:{start:["Ready for something exciting?","Good vibes and a great offer","Here's your sign to treat yourself"],emoji:"🎉"},urgent:{start:["A limited-time offer is here","Don't miss this special deal","Your reminder: this offer won't last forever"],emoji:"⏳"}};
 const categoryTips={shop:"Show a useful product and its price clearly.",salon:"Share a service menu or a real before-and-after only with permission.",food:"Use a bright, real photo and mention availability.",fitness:"Share a beginner-friendly tip; avoid guaranteed body or health claims.",tuition:"Explain one small concept clearly and state the class details.",repair:"Show the problem you solve and explain your service area.",clothing:"Show fabric, fit and available sizes honestly.",other:"Explain one real customer problem your business helps solve."};
 function safe(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
-function buildKit(e){e.preventDefault();const name=$('business').value.trim(),offer=$('offer').value.trim(),area=$('area').value.trim(),lang=$('language').value,tone=$('tone').value; if(!name||!offer)return;const p=plans[lang],c=copyText[lang],t=toneWords[tone];const place=area? " · "+area:"";const hook=t.start[(name.length+offer.length)%t.start.length];const caption=t.emoji+" "+hook+"!\n\n"+name+place+" is sharing something special: "+offer+".\n\n"+c.local+"\n\n"+c.cta+"\n\n"+name;
-const whatsapp=p.hello+"\n\n"+name+(area?" ("+area+")":"")+" ki taraf se aapke liye ek update!\n\n🎁 "+offer+"\n\n"+c.cta+"\n\n"+c.thanks+"\n\n— "+name;
-const days=[["Day 1",p.discover, "Introduce "+offer+" with a clear photo."],["Day 2",p.tips,categoryTips[$('category').value]],["Day 3",p.proof,"Share a genuine review only with permission, or explain your process."],["Day 4",p.hello,"Post a short FAQ about "+offer+"."],["Day 5",p.behind,"Show your workspace, preparation or team."],["Day 6",p.offer,"Remind people about "+offer+" and include accurate terms."],["Day 7",p.last,"Thank your customers and invite questions without pressuring them."]];
-$('caption').textContent=caption;$('whatsapp').textContent=whatsapp;
-$('calendar').innerHTML=days.map(d=>'<li><strong>'+safe(d[0]+' — '+d[1])+'</strong><br>'+safe(d[2])+'</li>').join('');
-const ads=[t.emoji+" "+offer+" — "+name, p.discover+": "+offer, c.local+" "+c.cta];$('ads').innerHTML=ads.map(x=>'<li>'+safe(x)+'</li>').join('');
-$('welcome').classList.add('hidden');$('results').classList.remove('hidden');$('results').scrollIntoView({behavior:'smooth',block:'start'});}
+function buildKit(e){
+ e.preventDefault();
+ const name=$('business').value.trim(),offer=$('offer').value.trim(),area=$('area').value.trim(),lang=$('language').value,tone=$('tone').value;
+ if(!name||!offer)return;
+ const p=plans[lang],c=copyText[lang],t=toneWords[tone],place=area?(lang==='hindi'?' · '+area:' · '+area):'';
+ let caption,whatsapp,ads;
+ if(lang==='hindi'){
+   const hooks=['आपके लिए कुछ खास','एक अच्छी खबर','आपके स्थानीय पसंदीदा व्यवसाय की नई पेशकश'];
+   caption=t.emoji+' '+hooks[(name.length+offer.length)%hooks.length]+'!\\n\\n'+name+place+' की खास पेशकश: '+offer+'।\\n\\nहम आपके अपने इलाके में आपकी सेवा के लिए हैं।\\n\\n'+c.cta+'\\n\\n'+name;
+   whatsapp='नमस्ते!\\n\\n'+name+place+' की ओर से आपके लिए एक अपडेट।\\n\\n🎁 '+offer+'\\n\\n'+c.cta+'\\n\\n'+c.thanks+'\\n\\n— '+name;
+   ads=[t.emoji+' '+offer+' — '+name,'आज की खास बात: '+offer,c.local+' '+c.cta];
+ }else if(lang==='english'){
+   caption=t.emoji+' '+t.start[(name.length+offer.length)%t.start.length]+'!\\n\\nA special update from '+name+place+': '+offer+'.\\n\\nWe are proud to serve our local community.\\n\\n'+c.cta+'\\n\\n'+name;
+   whatsapp='Hello from '+name+place+'!\\n\\n🎁 A special update for you: '+offer+'.\\n\\n'+c.cta+'\\n\\n'+c.thanks+'\\n\\n— '+name;
+   ads=[t.emoji+' '+offer+' — '+name,'Today’s highlight: '+offer,c.local+' '+c.cta];
+ }else{
+   caption=t.emoji+' '+t.start[(name.length+offer.length)%t.start.length]+'!\\n\\n'+name+place+' ki taraf se ek special update: '+offer+'.\\n\\n'+c.local+'\\n\\n'+c.cta+'\\n\\n'+name;
+   whatsapp=p.hello+'\\n\\n'+name+place+' ki taraf se aapke liye ek update!\\n\\n🎁 '+offer+'\\n\\n'+c.cta+'\\n\\n'+c.thanks+'\\n\\n— '+name;
+   ads=[t.emoji+' '+offer+' — '+name,p.discover+': '+offer,c.local+' '+c.cta];
+ }
+ const days=[['Day 1',p.discover,'Introduce '+offer+' with a clear photo.'],['Day 2',p.tips,categoryTips[$('category').value]],['Day 3',p.proof,'Share a genuine review only with permission, or explain your process.'],['Day 4',p.hello,'Post a short FAQ about '+offer+'.'],['Day 5',p.behind,'Show your workspace, preparation or team.'],['Day 6',p.offer,'Remind people about '+offer+' and include accurate terms.'],['Day 7',p.last,'Thank your customers and invite questions without pressuring them.']];
+ $('caption').textContent=caption;$('whatsapp').textContent=whatsapp;
+ $('calendar').innerHTML=days.map(d=>'<li><strong>'+safe(d[0]+' — '+d[1])+'</strong><br>'+safe(d[2])+'</li>').join('');
+ $('ads').innerHTML=ads.map(x=>'<li>'+safe(x)+'</li>').join('');
+ $('welcome').classList.add('hidden');$('results').classList.remove('hidden');$('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
 $('kitForm').addEventListener('submit',buildKit);
 let toastTimer;function toast(msg){const el=$('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add('hidden'),1800)}
 document.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const key=btn.dataset.copy;let text='';if(key==='calendar')text=[...$('calendar').querySelectorAll('li')].map(li=>li.innerText).join('\n');else if(key==='ads')text=[...$('ads').querySelectorAll('li')].map(li=>li.innerText).join('\n');else text=$(key).textContent;try{await navigator.clipboard.writeText(text);toast('Copied to clipboard ✓')}catch{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();toast(ok?'Copied to clipboard ✓':'Please select and copy the text manually')}}));
