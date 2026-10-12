@@ -22,9 +22,12 @@ This MVP uses built-in templates and simple local text generation. It does **not
 
 Open `index.html` in a modern browser. No install or build step is required.
 
-## Deploy
+## Tests and deployment
 
-The app is static HTML/CSS/JavaScript and can be hosted on any static host, including Vercel. For Vercel, use the repository root as the root directory and no build command is needed for this version.
+- Run the automated tests with `npm test` (Node.js 20+; no third-party packages are needed).
+- Tests cover required form controls, inline JavaScript syntax, generated output, Hindi/English output, seven-day plan generation, basic HTML escaping, and deployment security-header configuration.
+- The Vercel configuration adds baseline browser security headers. The Content Security Policy permits inline JavaScript and CSS because this MVP keeps its code in `index.html`; this is a compatibility trade-off, not a strict nonce-based CSP.
+- The app is static HTML/CSS/JavaScript. For Vercel, use the repository root as the root directory; no build command is required.
 
 ## Roadmap (validate before building)
 
