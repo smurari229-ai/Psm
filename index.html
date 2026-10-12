@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<meta name="description" content="Create ready-to-use social captions, WhatsApp promotions and a simple weekly marketing plan for your local business. Free, no sign-up.">
+<title>DukaanBoost — Simple marketing for local businesses</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#121c2e;--panel2:#18253a;--line:#293851;--text:#f4f7fb;--muted:#a7b4c8;--lime:#c8f169;--blue:#8bc5ff;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#233d50 0,transparent 40%),var(--bg);color:var(--text);font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.wrap{width:min(1120px,92%);margin:auto}.nav{display:flex;align-items:center;justify-content:space-between;padding:22px 0}.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:-.5px}.mark{width:36px;height:36px;display:grid;place-items:center;border-radius:12px;background:var(--lime);color:#111827;font-weight:950}.tag{color:var(--lime);font-size:12px;letter-spacing:1.2px;font-weight:800}.hero{padding:38px 0 30px;max-width:760px}.hero h1{font-size:clamp(38px,6vw,66px);line-height:1.02;letter-spacing:-2.8px;margin:14px 0}.hero h1 span{color:var(--lime)}.hero p{color:var(--muted);font-size:18px;max-width:620px}.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.pill{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:#dbe4ef;font-size:13px}.layout{display:grid;grid-template-columns:340px 1fr;gap:18px;align-items:start;padding:14px 0 60px}.panel{background:linear-gradient(160deg,#152238,#101a2b);border:1px solid var(--line);border-radius:var(--radius);padding:22px}.panel h2{font-size:19px;margin:0 0 4px}.sub{font-size:13px;color:var(--muted);margin:0 0 20px}.field{display:block;margin:15px 0}.field span{display:block;font-size:13px;font-weight:700;color:#d8e2ef;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;background:#0b1424;border:1px solid #31415a;color:var(--text);border-radius:10px;padding:12px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--lime);box-shadow:0 0 0 3px #c8f16920}.field textarea{min-height:78px;resize:vertical}.primary{border:0;border-radius:11px;background:var(--lime);color:#121827;font-weight:850;padding:13px 16px;width:100%;transition:transform .15s}.primary:hover{transform:translateY(-1px)}.outputs{min-width:0}.welcome{border:1px dashed #3a4b65;border-radius:var(--radius);padding:30px;text-align:center;color:var(--muted);margin-bottom:16px}.welcome strong{display:block;color:var(--text);font-size:19px;margin:10px}.output-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.result{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0}.result h3{margin:0 0 10px;font-size:16px;display:flex;align-items:center;gap:8px}.result p,.result li{color:#d3dce8;font-size:14px;overflow-wrap:anywhere}.result p{white-space:pre-wrap}.result ul{padding-left:19px}.result.wide{grid-column:1/-1}.copy{background:#23334a;color:#eaf2fc;border:1px solid #3a4b65;border-radius:9px;padding:8px 11px;font-size:12px;font-weight:750}.copy:hover{border-color:var(--lime)}.result-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.small{font-size:12px;color:var(--muted)}.notice{color:var(--muted);font-size:12px;margin-top:15px}.footer{border-top:1px solid var(--line);padding:22px 0 32px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.hidden{display:none!important}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--lime);color:#101827;padding:10px 16px;border-radius:99px;font-weight:800;font-size:13px;box-shadow:0 10px 40px #0006;z-index:5}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.hero{padding-top:24px}.output-grid{grid-template-columns:1fr}.result.wide{grid-column:auto}.panel{padding:18px}.hero h1{letter-spacing:-1.8px}.nav{padding:16px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="nav"><div class="brand"><span class="mark">D</span><span>DukaanBoost</span></div><span class="tag">FREE BUSINESS TOOLKIT</span></header>
+<section class="hero"><div class="tag">LESS GUESSWORK. MORE CUSTOMERS.</div><h1>Your next customer starts with <span>a better post.</span></h1><p>Make practical promotions for your shop, salon, cafe or local service. Get social captions, a WhatsApp message and a 7-day posting plan in seconds.</p><div class="pills"><span class="pill">✓ No sign-up</span><span class="pill">✓ Works on mobile</span><span class="pill">✓ No API key needed</span><span class="pill">✓ Copy and use anywhere</span></div></section>
+<main class="layout">
+<section class="panel"><h2>Tell us about your business</h2><p class="sub">Fill in a few details to make your marketing kit.</p>
+<form id="kitForm">
+<label class="field"><span>Business name</span><input id="business" maxlength="70" placeholder="e.g. Sharma Beauty Parlour" required></label>
+<label class="field"><span>Business type</span><select id="category"><option value="shop">Retail shop</option><option value="salon">Salon / beauty parlour</option><option value="food">Cafe / restaurant / bakery</option><option value="fitness">Gym / fitness studio</option><option value="tuition">Tuition / coaching</option><option value="repair">Repair / home service</option><option value="clothing">Clothing / boutique</option><option value="other">Other local business</option></select></label>
+<label class="field"><span>Preferred language</span><select id="language"><option value="hinglish">Hinglish (Roman Hindi)</option><option value="hindi">Hindi</option><option value="english">English</option></select></label>
+<label class="field"><span>Offer or service to promote</span><input id="offer" maxlength="120" placeholder="e.g. 15% off on hair spa" required></label>
+<label class="field"><span>Area / city (optional)</span><input id="area" maxlength="70" placeholder="e.g. Indore, Vijay Nagar"></label>
+<label class="field"><span>Brand style</span><select id="tone"><option value="friendly">Friendly and local</option><option value="premium">Premium and polished</option><option value="playful">Fun and energetic</option><option value="urgent">Limited-time offer</option></select></label>
+<button class="primary" type="submit">Create my marketing kit →</button>
+<p class="notice">This starter uses built-in templates, not a live AI model. Your entries stay in this page and are not sent to a server.</p>
+</form></section>
+<section class="outputs"><div id="welcome" class="welcome"><div style="font-size:34px">✳</div><strong>Your marketing kit will appear here</strong>Enter your business details and tap “Create my marketing kit”. You can copy each item separately.</div>
+<div id="results" class="output-grid hidden">
+<article class="result"><div class="result-head"><h3>📱 Social caption</h3><button class="copy" data-copy="caption">Copy</button></div><p id="caption"></p></article>
+<article class="result"><div class="result-head"><h3>💬 WhatsApp promotion</h3><button class="copy" data-copy="whatsapp">Copy</button></div><p id="whatsapp"></p></article>
+<article class="result wide"><div class="result-head"><h3>🗓️ Your 7-day posting plan</h3><button class="copy" data-copy="calendar">Copy</button></div><ul id="calendar"></ul></article>
+<article class="result"><div class="result-head"><h3>📣 Short ad lines</h3><button class="copy" data-copy="ads">Copy</button></div><ul id="ads"></ul></article>
+<article class="result"><div class="result-head"><h3>✅ Before you post</h3></div><ul id="checklist"><li>Confirm the offer and its expiry date.</li><li>Use a real photo of your product or service.</li><li>Include your location and contact details.</li><li>Only promise discounts and results you can deliver.</li></ul></article>
+</div></section>
+</main>
+<footer class="footer"><span>© <span id="year"></span> DukaanBoost · Built for small businesses</span><span>Simple tools, honest marketing. No income guarantees.</span></footer>
+</div><div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script>
+const $=id=>document.getElementById(id);
+const plans={
+hinglish:{hello:"Namaste!",discover:"Aaj ka highlight",proof:"Customer trust",tips:"Helpful tip",offer:"Offer reminder",behind:"Behind the scenes",last:"Aakhri call"},
+hindi:{hello:"नमस्ते!",discover:"आज की खास बात",proof:"ग्राहकों का भरोसा",tips:"काम की सलाह",offer:"ऑफर की याद",behind:"काम की झलक",last:"आखिरी मौका"},
+english:{hello:"Hello!",discover:"Today's highlight",proof:"Customer trust",tips:"Helpful tip",offer:"Offer reminder",behind:"Behind the scenes",last:"Last call"}
+};
+const copyText={
+hinglish:{cta:"Details ke liye humein message karein.",local:"Aapke apne area mein, aapki service ke saath.",thanks:"Aapke support ke liye dil se shukriya!",valid:"Offer ki conditions aur last date pehle confirm karein."},
+hindi:{cta:"जानकारी के लिए हमें मैसेज करें।",local:"आपके अपने इलाके में, आपकी सेवा के साथ।",thanks:"आपके सहयोग के लिए दिल से धन्यवाद!",valid:"ऑफर की शर्तें और आखिरी तारीख पहले तय करें।"},
+english:{cta:"Message us to know more.",local:"Serving our local community with care.",thanks:"Thank you for supporting our small business!",valid:"Confirm offer terms and end date before publishing."}
+};
+const toneWords={friendly:{start:["A little something special for you","Good news, neighbours","Your local favourite has an update"],emoji:"😊"},premium:{start:["A thoughtful upgrade to your routine","Quality and care, in every detail","Discover something made for you"],emoji:"✨"},playful:{start:["Ready for something exciting?","Good vibes and a great offer","Here's your sign to treat yourself"],emoji:"🎉"},urgent:{start:["A limited-time offer is here","Don't miss this special deal","Your reminder: this offer won't last forever"],emoji:"⏳"}};
+const categoryTips={shop:"Show a useful product and its price clearly.",salon:"Share a service menu or a real before-and-after only with permission.",food:"Use a bright, real photo and mention availability.",fitness:"Share a beginner-friendly tip; avoid guaranteed body or health claims.",tuition:"Explain one small concept clearly and state the class details.",repair:"Show the problem you solve and explain your service area.",clothing:"Show fabric, fit and available sizes honestly.",other:"Explain one real customer problem your business helps solve."};
+function safe(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function buildKit(e){e.preventDefault();const name=$('business').value.trim(),offer=$('offer').value.trim(),area=$('area').value.trim(),lang=$('language').value,tone=$('tone').value; if(!name||!offer)return;const p=plans[lang],c=copyText[lang],t=toneWords[tone];const place=area? " · "+area:"";const hook=t.start[(name.length+offer.length)%t.start.length];const caption=t.emoji+" "+hook+"!\n\n"+name+place+" is sharing something special: "+offer+".\n\n"+c.local+"\n\n"+c.cta+"\n\n"+name;
+const whatsapp=p.hello+"\n\n"+name+(area?" ("+area+")":"")+" ki taraf se aapke liye ek update!\n\n🎁 "+offer+"\n\n"+c.cta+"\n\n"+c.thanks+"\n\n— "+name;
+const days=[["Day 1",p.discover, "Introduce "+offer+" with a clear photo."],["Day 2",p.tips,categoryTips[$('category').value]],["Day 3",p.proof,"Share a genuine review only with permission, or explain your process."],["Day 4",p.hello,"Post a short FAQ about "+offer+"."],["Day 5",p.behind,"Show your workspace, preparation or team."],["Day 6",p.offer,"Remind people about "+offer+" and include accurate terms."],["Day 7",p.last,"Thank your customers and invite questions without pressuring them."]];
+$('caption').textContent=caption;$('whatsapp').textContent=whatsapp;
+$('calendar').innerHTML=days.map(d=>'<li><strong>'+safe(d[0]+' — '+d[1])+'</strong><br>'+safe(d[2])+'</li>').join('');
+const ads=[t.emoji+" "+offer+" — "+name, p.discover+": "+offer, c.local+" "+c.cta];$('ads').innerHTML=ads.map(x=>'<li>'+safe(x)+'</li>').join('');
+$('welcome').classList.add('hidden');$('results').classList.remove('hidden');$('results').scrollIntoView({behavior:'smooth',block:'start'});}
+$('kitForm').addEventListener('submit',buildKit);
+let toastTimer;function toast(msg){const el=$('toast');el.textContent=msg;el.classList.remove('hidden');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.add('hidden'),1800)}
+document.querySelectorAll('[data-copy]').forEach(btn=>btn.addEventListener('click',async()=>{const key=btn.dataset.copy;let text='';if(key==='calendar')text=[...$('calendar').querySelectorAll('li')].map(li=>li.innerText).join('\n');else if(key==='ads')text=[...$('ads').querySelectorAll('li')].map(li=>li.innerText).join('\n');else text=$(key).textContent;try{await navigator.clipboard.writeText(text);toast('Copied to clipboard ✓')}catch{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();toast(ok?'Copied to clipboard ✓':'Please select and copy the text manually')}}));
+$('year').textContent=new Date().getFullYear();
+</script>
+</body></html>
