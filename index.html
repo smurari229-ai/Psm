@@ -74,7 +74,31 @@ function buildKit(e){
    whatsapp=p.hello+'\\n\\n'+name+place+' ki taraf se aapke liye ek update!\\n\\n🎁 '+offer+'\\n\\n'+c.cta+'\\n\\n'+c.thanks+'\\n\\n— '+name;
    ads=[t.emoji+' '+offer+' — '+name,p.discover+': '+offer,c.local+' '+c.cta];
  }
- const days=[['Day 1',p.discover,'Introduce '+offer+' with a clear photo.'],['Day 2',p.tips,categoryTips[$('category').value]],['Day 3',p.proof,'Share a genuine review only with permission, or explain your process.'],['Day 4',p.hello,'Post a short FAQ about '+offer+'.'],['Day 5',p.behind,'Show your workspace, preparation or team.'],['Day 6',p.offer,'Remind people about '+offer+' and include accurate terms.'],['Day 7',p.last,'Thank your customers and invite questions without pressuring them.']];
+ const days=lang==='hindi'?[
+ ['दिन 1',p.discover,offer+' की साफ तस्वीर के साथ अपनी पेशकश बताएं।'],
+ ['दिन 2',p.tips,'उपयोगी सलाह: '+categoryTips[$('category').value]],
+ ['दिन 3',p.proof,'सच्ची ग्राहक प्रतिक्रिया अनुमति लेकर साझा करें, या अपना काम समझाएं।'],
+ ['दिन 4',p.hello,offer+' के बारे में एक आम सवाल का जवाब दें।'],
+ ['दिन 5',p.behind,'अपनी दुकान, तैयारी या टीम की झलक दिखाएं।'],
+ ['दिन 6',p.offer,offer+' की शर्तें और सही आखिरी तारीख बताएं।'],
+ ['दिन 7',p.last,'ग्राहकों को धन्यवाद दें और उनके सवालों का स्वागत करें।']
+ ]:lang==='hinglish'?[
+ ['Din 1',p.discover,offer+' ki clear photo ke saath apni offer batayein.'],
+ ['Din 2',p.tips,'Ek useful tip share karein: '+categoryTips[$('category').value]],
+ ['Din 3',p.proof,'Permission lekar real customer feedback share karein ya apna process batayein.'],
+ ['Din 4',p.hello,offer+' ke baare mein ek common sawal ka jawab dein.'],
+ ['Din 5',p.behind,'Apni shop, preparation ya team ki jhalak dikhayein.'],
+ ['Din 6',p.offer,offer+' ki conditions aur sahi last date batayein.'],
+ ['Din 7',p.last,'Customers ko thank you bolein aur unke sawalon ka welcome karein.']
+ ]:[
+ ['Day 1',p.discover,'Introduce '+offer+' with a clear photo.'],
+ ['Day 2',p.tips,categoryTips[$('category').value]],
+ ['Day 3',p.proof,'Share a genuine review only with permission, or explain your process.'],
+ ['Day 4',p.hello,'Post a short FAQ about '+offer+'.'],
+ ['Day 5',p.behind,'Show your workspace, preparation or team.'],
+ ['Day 6',p.offer,'Remind people about '+offer+' and include accurate terms.'],
+ ['Day 7',p.last,'Thank your customers and invite questions without pressuring them.']
+ ];
  $('caption').textContent=caption;$('whatsapp').textContent=whatsapp;
  $('calendar').innerHTML=days.map(d=>'<li><strong>'+safe(d[0]+' — '+d[1])+'</strong><br>'+safe(d[2])+'</li>').join('');
  $('ads').innerHTML=ads.map(x=>'<li>'+safe(x)+'</li>').join('');
