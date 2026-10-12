@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+const vercelConfig = JSON.parse(fs.readFileSync(new URL('../vercel.json', import.meta.url), 'utf8'));
 const scriptStart = html.lastIndexOf('<script>') + '<script>'.length;
 const scriptEnd = html.indexOf('</script>', scriptStart);
 assert.ok(scriptStart >= '<script>'.length && scriptEnd > scriptStart, 'app should include its inline script');
@@ -20,6 +21,13 @@ test('page has mobile metadata and required business form controls', () => {
   assert.match(html, /data-copy="calendar"/);
   assert.match(html, /data-copy="ads"/);
   assert.equal(html.includes('<script src='), false, 'MVP should not rely on remote scripts');
+});
+
+test('deployment security headers are configured', () => {
+  const headers = vercelConfig.headers.flatMap(rule => rule.headers).reduce((acc, item) => ({ ...acc, [item.key]: item.value }), {});
+  for (const key of ['X-Content-Type-Options', 'X-Frame-Options', 'Referrer-Policy', 'Permissions-Policy', 'Content-Security-Policy']) assert.ok(headers[key], key + ' header should be configured');
+  assert.match(headers['Content-Security-Policy'], /object-src 'none'/);
+  assert.match(headers['Content-Security-Policy'], /frame-ancestors 'none'/);
 });
 
 test('inline JavaScript parses successfully', () => {
@@ -82,6 +90,7 @@ test('Hindi and English modes produce language-specific promotional text', () =>
     $('kitForm').listeners.submit({ preventDefault() {} });
     assert.ok($('whatsapp').textContent.includes(expected), language + ' message should use the selected language');
     assert.match($('caption').textContent, /Weekend special/);
+    if (language === 'hindi') assert.match($('calendar').innerHTML, /दिन 1/);
   }
 });
 
