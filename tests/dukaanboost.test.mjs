@@ -4,7 +4,10 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 
 const html = fs.readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-const scriptStart = html.lastIndexOf('<script>') + '<script>'.length;\nconst scriptEnd = html.indexOf('</script>', scriptStart);\nassert.ok(scriptStart >= '<script>'.length && scriptEnd > scriptStart, 'app should include its inline script');\nconst appScript = html.slice(scriptStart, scriptEnd);
+const scriptStart = html.lastIndexOf('<script>') + '<script>'.length;
+const scriptEnd = html.indexOf('</script>', scriptStart);
+assert.ok(scriptStart >= '<script>'.length && scriptEnd > scriptStart, 'app should include its inline script');
+const appScript = html.slice(scriptStart, scriptEnd);
 
 test('page has mobile metadata and required business form controls', () => {
   assert.match(html, /<meta name="viewport"/i);
@@ -16,7 +19,7 @@ test('page has mobile metadata and required business form controls', () => {
   assert.match(html, /data-copy="whatsapp"/);
   assert.match(html, /data-copy="calendar"/);
   assert.match(html, /data-copy="ads"/);
-  assert.doesNotMatch(html, /<script\\s+[^>]*src=/i, 'MVP should not rely on remote scripts');
+  assert.equal(html.includes('<script src='), false, 'MVP should not rely on remote scripts');
 });
 
 test('inline JavaScript parses successfully', () => {
