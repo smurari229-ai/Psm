@@ -72,6 +72,8 @@ test('submit generates caption, WhatsApp message and seven-day plan', () => {
   assert.equal(prevented, true);
   assert.match($('caption').textContent, /Test Bakery/);
   assert.match($('caption').textContent, /Fresh bread combo/);
+  assert.ok($('caption').textContent.includes('\n'), 'generated caption should contain real line breaks');
+  assert.equal($('caption').textContent.includes('\\n'), false, 'generated caption should not contain literal backslash-n text');
   assert.match($('whatsapp').textContent, /Test Bakery/);
   assert.match($('whatsapp').textContent, /Fresh bread combo/);
   assert.equal(($('calendar').innerHTML.match(/<li>/g) || []).length, 7);
