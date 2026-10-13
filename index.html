@@ -62,16 +62,16 @@ function buildKit(e){
  let caption,whatsapp,ads;
  if(lang==='hindi'){
    const hooks=['आपके लिए कुछ खास','एक अच्छी खबर','आपके स्थानीय पसंदीदा व्यवसाय की नई पेशकश'];
-   caption=t.emoji+' '+hooks[(name.length+offer.length)%hooks.length]+'!\\n\\n'+name+place+' की खास पेशकश: '+offer+'।\\n\\nहम आपके अपने इलाके में आपकी सेवा के लिए हैं।\\n\\n'+c.cta+'\\n\\n'+name;
-   whatsapp='नमस्ते!\\n\\n'+name+place+' की ओर से आपके लिए एक अपडेट।\\n\\n🎁 '+offer+'\\n\\n'+c.cta+'\\n\\n'+c.thanks+'\\n\\n— '+name;
+   caption=t.emoji+' '+hooks[(name.length+offer.length)%hooks.length]+'!\n\n'+name+place+' की खास पेशकश: '+offer+'।\n\nहम आपके अपने इलाके में आपकी सेवा के लिए हैं।\n\n'+c.cta+'\n\n'+name;
+   whatsapp='नमस्ते!\n\n'+name+place+' की ओर से आपके लिए एक अपडेट।\n\n🎁 '+offer+'\n\n'+c.cta+'\n\n'+c.thanks+'\n\n— '+name;
    ads=[t.emoji+' '+offer+' — '+name,'आज की खास बात: '+offer,c.local+' '+c.cta];
  }else if(lang==='english'){
-   caption=t.emoji+' '+t.start[(name.length+offer.length)%t.start.length]+'!\\n\\nA special update from '+name+place+': '+offer+'.\\n\\nWe are proud to serve our local community.\\n\\n'+c.cta+'\\n\\n'+name;
-   whatsapp='Hello from '+name+place+'!\\n\\n🎁 A special update for you: '+offer+'.\\n\\n'+c.cta+'\\n\\n'+c.thanks+'\\n\\n— '+name;
+   caption=t.emoji+' '+t.start[(name.length+offer.length)%t.start.length]+'!\n\nA special update from '+name+place+': '+offer+'.\n\nWe are proud to serve our local community.\n\n'+c.cta+'\n\n'+name;
+   whatsapp='Hello from '+name+place+'!\n\n🎁 A special update for you: '+offer+'.\n\n'+c.cta+'\n\n'+c.thanks+'\n\n— '+name;
    ads=[t.emoji+' '+offer+' — '+name,'Today’s highlight: '+offer,c.local+' '+c.cta];
  }else{
-   caption=t.emoji+' '+t.start[(name.length+offer.length)%t.start.length]+'!\\n\\n'+name+place+' ki taraf se ek special update: '+offer+'.\\n\\n'+c.local+'\\n\\n'+c.cta+'\\n\\n'+name;
-   whatsapp=p.hello+'\\n\\n'+name+place+' ki taraf se aapke liye ek update!\\n\\n🎁 '+offer+'\\n\\n'+c.cta+'\\n\\n'+c.thanks+'\\n\\n— '+name;
+   caption=t.emoji+' '+t.start[(name.length+offer.length)%t.start.length]+'!\n\n'+name+place+' ki taraf se ek special update: '+offer+'.\n\n'+c.local+'\n\n'+c.cta+'\n\n'+name;
+   whatsapp=p.hello+'\n\n'+name+place+' ki taraf se aapke liye ek update!\n\n🎁 '+offer+'\n\n'+c.cta+'\n\n'+c.thanks+'\n\n— '+name;
    ads=[t.emoji+' '+offer+' — '+name,p.discover+': '+offer,c.local+' '+c.cta];
  }
  const days=lang==='hindi'?[
