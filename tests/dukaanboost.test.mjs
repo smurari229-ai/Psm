@@ -20,6 +20,10 @@ test('page has mobile metadata and required business form controls', () => {
   assert.match(html, /data-copy="whatsapp"/);
   assert.match(html, /data-copy="calendar"/);
   assert.match(html, /data-copy="ads"/);
+  assert.match(html, /id="copyAll"/, 'users can copy the complete kit');
+  assert.match(html, /id="downloadKit"/, 'users can download the complete kit');
+  assert.match(html, /id="resetForm"/, 'users can start over without refreshing');
+  assert.match(html, /function getKitText\(\)/, 'full kit export should include generated sections');
   assert.equal(html.includes('<script src='), false, 'MVP should not rely on remote scripts');
 });
 
